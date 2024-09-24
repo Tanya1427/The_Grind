@@ -106,3 +106,7 @@ class Solution:
         paste = 1  # Paste value now has something
 
         return keyboard(paste, a_count, COPIED, operations)
+
+"""
+Reviewed:
+Passed all leetcode testcases
