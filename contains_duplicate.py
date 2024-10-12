@@ -25,3 +25,6 @@ class Solution:
                 return True
         return False
 
+"""
+Instead of hash map. set could just be used - saw a solution :)
+"""
