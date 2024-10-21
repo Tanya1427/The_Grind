@@ -88,6 +88,6 @@ class Solution:
 Reviewed
 
 Evaluate:
-Space: O(1)
-Time: O(n) -> max
+Space: O(n) -> worst case
+Time: O(n)
 """
