@@ -15,7 +15,7 @@ set temp to ListNode("HI")
 set temp.next to head
 current = temp
 fast
-duplicate_value = 1
+current.val = 1
 counter = 0
 
 while True:
@@ -24,30 +24,25 @@ while True:
 """
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if head is None or head.next is None:
+        if not (head and head.next):
             return head
 
-        temp = ListNode("HI")
+        temp = ListNode("")
         temp.next = head
-
         previous = temp
-        current = previous.next
-        duplicate_value = current.val
-        counter = 1
+        current = previous
+        behind = current  # Don't want to many .nexts
 
         while current:
-            # print(counter, duplicate_value, current.next.val)
-            if current.next and current.next.val == duplicate_value:
-                counter += 1
+            if current.next and current.val == current.next.val:
+                behind = current
                 current = current.next
-                # continue
-            if counter > 1:
+                continue
+
+            if behind.val == current.val:
                 previous.next = current.next
-            print("Counter: ", counter, duplicate_value)
-            previous = current
+            else:
+                previous = current
             current = current.next
-            if current:
-                duplicate_value = current.val
-            counter = 1
 
         return temp.next
