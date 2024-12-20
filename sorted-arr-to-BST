@@ -1,0 +1,62 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+"""
+Understand.
+No duplicates.
+[0, 1, 2, 3, 4, 5, 6, 7]
+binary tree.
+
+Match:
+BST. Alright, Recursion.
+
+Plan.
+left -> [0, 1, 2, 3]
+mid = 4
+right -> [5, 6, 7]
+
+node = TreeNode(4)
+node.left = makeTree(left)
+node.right = makeTree(right)
+
+return node
+
+
+Implement:
+"""
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        def make_tree(start, end):  # prevent passing in slices - memory
+            if start == end:
+                return None
+            mid = (end+start) // 2
+            sub_tree = TreeNode(nums[mid])
+            sub_tree.left = make_tree(start, mid)
+            sub_tree.right = make_tree(mid+1, end)
+            return sub_tree
+
+        return make_tree(0, len(nums))
+
+"""
+Review:
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+start = 0
+end = 8
+mid = 8//2 = 4
+
+    left
+    start = 0
+    end = 4
+    mid = 4//2 = 2
+
+                    4
+
+
+Evaluate:
+O(n) time. O(n), recursion depth, space (All nodes will be "called for")
+"""
