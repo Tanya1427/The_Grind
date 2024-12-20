@@ -60,3 +60,46 @@ mid = 8//2 = 4
 Evaluate:
 O(n) time. O(n), recursion depth, space (All nodes will be "called for")
 """
+
+
+"""
+Understand.
+[1, 2, 3, 4, 5, 6, 7]
+
+                        5
+                2               6
+            1       3       5       7
+
+Match:
+BST. BFS. Iterative solution
+
+Plan.
+
+"""
+
+class SolutionIter:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        n = len(nums)
+        mid = n // 2
+        add = round(n / 4)
+        root = TreeNode(nums[mid])
+        tree_nodes = {mid: root}  # could make this an array
+        positions = (("left", -1), ("right", 1))
+        queue = deque([mid])
+        while queue:
+            length = len(queue)
+            for _ in range(length):
+                mid = queue.popleft()
+                parent_node = tree_nodes[mid]
+                print(mid)
+
+                for child, dif in positions:
+                    node_index = mid + dif*add
+                    if node_index in tree_nodes or node_index >= n:
+                        continue
+                    child_node = TreeNode(nums[node_index])
+                    tree_nodes[node_index] = child_node
+                    setattr(parent_node, child, child_node)
+                    queue.append(node_index)
+            add = round(add/2)
+        return root
