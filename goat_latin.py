@@ -71,7 +71,7 @@ class Solution:
 
     def toGoatLatin(self, sentence: str) -> str:
         vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
-        goat_latin = []
+        goat_latin = StringIO()
         first_letter = ""
         freq_a = 1
 
@@ -83,16 +83,16 @@ class Solution:
 
             if ch == ' ':
                 if first_letter not in vowels:
-                    goat_latin.append(first_letter)
+                    goat_latin.write(first_letter)
 
-                goat_latin.append("ma" + 'a'*freq_a)
+                goat_latin.write("ma" + 'a'*freq_a)
                 first_letter = ""
                 freq_a += 1
 
-            goat_latin.append(ch)
+            goat_latin.write(ch)
 
         if first_letter not in vowels:
-            goat_latin.append(first_letter)
-        goat_latin.append("ma" + 'a'*freq_a)
+            goat_latin.write(first_letter)
+        goat_latin.write("ma" + 'a'*freq_a)
 
-        return "".join(goat_latin)
+        return goat_latin.getvalue()
