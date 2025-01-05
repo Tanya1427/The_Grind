@@ -70,7 +70,6 @@ prefix_shifts
 prefix_shifts
 [0, 1, 2, 0]
 
-
 Evaluate:
 n -> len(s)
 Space: prefix_shifts, new_string => O(n)
