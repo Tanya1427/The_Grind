@@ -155,3 +155,19 @@ Best case: there'll be many max_len words
 
 Space: O(n)
 """
+
+
+"""
+Implement 2
+"""
+class Solution:
+    def stringMatching(self, words: List[str]) -> List[str]:
+        answer = set()
+        for pattern in words:
+            for text in words:
+                if len(pattern) < len(text) and pattern in text:
+                    answer.add(pattern)
+        return [*answer]
+"""
+Evaluate: Time: O(n**2)
+"""
