@@ -55,6 +55,6 @@ class Solution:
 Reviewed
 
 Evaluate.
-Space: Hashmap, O(1)
+Space: Hashmap, O(n) -> repeated hashmap copies for all words
 Time: O(n * m). m = len(words[i]) | n = len(words)
 """
