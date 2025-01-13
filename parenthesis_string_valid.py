@@ -81,6 +81,35 @@ class Solution:
         
         return min_open == 0
 
+class Solution:
+    def canBeValid(self, s: str, locked: str) -> bool:
+        n = len(s)
+        if n & 1: return False
+        if s[0] == ')' and locked[0] == '1': return False
+        stack = 0
+        for i in range(1, n, 2):  # Will end in odd i
+            if s[i] == ')':
+                if s[i - 1] == '(' or locked[i - 1] == '0':
+                    continue
+                if not stack:
+                    return False
+                # s[i - 1] is ')' and it's locked, and can't pop
+                stack -= 2
+            # s[i] == '('
+            if s[i - 1] == '(':
+                if locked[i] == '0':  # Change and pop()
+                    continue
+                stack += 2  # Add two open brackets
+            else:  # s[i - 1] == ')'
+                if locked[i - 1] == '0':
+                    stack += 2
+                elif locked[i] == '0':
+                    stack -= 2
+                    if stack < 0:
+                        return False
+
+        return stack == 0
+
 """
 Review
 ( ( ( ) ( ) ) )
