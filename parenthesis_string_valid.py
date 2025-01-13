@@ -110,6 +110,23 @@ class Solution:
 
         return stack == 0
 
+class Solution:
+    def canBeValid1(self, s: str, locked: str) -> bool:
+        stack, n = [], len(s)
+        if n & 1: return False
+        for i in range(n):
+            bracket, lock = s[i], locked[i]
+            if stack:
+                stack.append('(') if bracket == '(' and lock == '1' else stack.pop()
+                continue
+
+            # Stack is empty, so you can't add a ')' first
+            if bracket == ')' and lock == '1':
+                return False
+            # Either changed bracket or bracket is '('
+            stack.append('(')
+
+        return not stack
 """
 Review
 ( ( ( ) ( ) ) )
