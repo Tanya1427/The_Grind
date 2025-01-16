@@ -69,7 +69,7 @@ class Solution:
         for i in nums1:
             xor_1 ^= i
 
-        return xor_1 ^ (len(nums1) & 1 and xor_2)
+        return xor_1 ^ (len_1 & 1 and xor_2)
 
 """
 Reviewed.
