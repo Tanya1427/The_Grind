@@ -51,8 +51,6 @@ class Solution:
 """
 Review.
 Was a lot of edge cases.
-[["X","."],
- [".","X"]]
 
 Evaluate
 Space: O(1)
