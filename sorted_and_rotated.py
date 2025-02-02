@@ -21,6 +21,7 @@ class Solution:
 """
 Review.
 [2,1,3,4] made me realize wrapping.
+thinking of [1], then [1,1,1] made me realize `return ... == 1` won't work
 
 Evaluate:
 Space: O(1)
