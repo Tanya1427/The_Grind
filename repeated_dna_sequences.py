@@ -34,9 +34,12 @@ Implement:
 
 class Solution:
     def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        n = len(s)
+        if n <= 10:
+            return []
+
         digits = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
         ans = []
-        n = len(s)
         hv = 0
         MAX = 4 ** 9
         for i in range(10):
